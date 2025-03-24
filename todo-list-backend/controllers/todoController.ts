@@ -3,6 +3,10 @@ import { todoService } from "../services/todoService";
 
 const dateTime = new Date().toJSON();
 
+/**
+ * Handle HTTP requests for to-do operations
+ */
+
 export const healthCheck = async (req: Request, res: Response) => {
   res.send(`Todo APIs is running [${dateTime}]`);
 };
