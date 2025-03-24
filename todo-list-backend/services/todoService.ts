@@ -2,7 +2,7 @@ import admin from "firebase-admin";
 
 if (!admin.apps.length) {
   admin.initializeApp({
-    credential: admin.credential.cert(require("../firebaseKey.json")),
+    credential: admin.credential.cert(require("../key.json")),
   });
 }
 
