@@ -1,6 +1,7 @@
-import { ListItem, Checkbox, IconButton, Typography, Chip, Box } from '@mui/material';
+import { ListItem, Checkbox, IconButton, Typography, Chip, Box, Stack, Tooltip } from '@mui/material';
 import { Delete, Edit } from '@mui/icons-material';
 import {Todo, TodoPriority} from '../types/todo'
+import { formatDate } from '../lib/lib';
 
 interface TodoItemProps {
   todo: Todo;
@@ -10,7 +11,7 @@ interface TodoItemProps {
 }
 
 export default function TodoItem({ todo, onToggle, onDelete, onEdit }: TodoItemProps) {
-
+  
   const priorityColor = {
     [TodoPriority.HIGH]: 'error',
     [TodoPriority.MEDIUM]: 'warning',
@@ -30,6 +31,10 @@ export default function TodoItem({ todo, onToggle, onDelete, onEdit }: TodoItemP
         bgcolor: 'grey.900',
       }}
     >
+      <Stack direction="row" spacing={1}>
+        {todo.completed && <Chip label={'Completed'} color="success" variant='outlined'/> || null }
+        <Chip label={todo.priority} color={priorityColor as any} sx={{textTransform: 'uppercase'}} />
+      </Stack>
       <Box sx={{ display: 'flex', alignItems: 'center', width: '100%' }}>
         <Checkbox
           checked={todo.completed}
@@ -51,21 +56,24 @@ export default function TodoItem({ todo, onToggle, onDelete, onEdit }: TodoItemP
             </Typography>
           )}
         </Box>
+        <Tooltip title="Edit">
         <IconButton onClick={() => onEdit(todo)} aria-label="edit" sx={{ color: 'grey.300' }}>
           <Edit />
         </IconButton>
+        </Tooltip>
+        <Tooltip title="Delete">
         <IconButton onClick={() => onDelete(todo.id)} aria-label="delete" sx={{ color: 'grey.300' }}>
           <Delete />
         </IconButton>
+        </Tooltip>
       </Box>
       <Box sx={{ display: 'flex', gap: 1, alignItems: 'center' }}>
-        <Chip label={todo.priority} color={priorityColor} size="small" />
         <Typography variant="caption" sx={{ color: 'grey.500' }}>
-          Created: {todo.createdAt.toLocaleString()}
+          Created: {formatDate(todo.createdAt)}
         </Typography>
         {todo.updatedAt && (
           <Typography variant="caption" sx={{ color: 'grey.500' }}>
-            Updated: {todo.updatedAt.toLocaleString()}
+          || Updated: {formatDate(todo.updatedAt)}
           </Typography>
         )}
       </Box>

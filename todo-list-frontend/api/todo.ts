@@ -11,8 +11,9 @@ async function apiCall(endpoint: string, options: RequestInit = {}) {
 
   try {
     const response = await fetch(url, config);
+    console.log(response);
     if (response && response?.status === 200) {
-      return response.json;
+      return await response.json();
     } else {
       throw new Error(`API errors [${response.status}]: ${response.text()}`);
     }
