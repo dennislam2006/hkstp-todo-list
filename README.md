@@ -14,7 +14,7 @@ CRUD operations for a to-do lists, responsive design, clean design pattern and v
 2. Install dependencies:
    - Frontend: `cd todo-list-frontend && npm install`
    - Backend: `cd todo-list-backend && npm install`
-3. Configure Firebase (add service account key).
+3. Download the Firebase Key file (key.json) from email and move to the root of `todo-list-backend` folder
 4. Run:
    - Frontend: `npm run dev`
    - Backend: `npm run dev`
