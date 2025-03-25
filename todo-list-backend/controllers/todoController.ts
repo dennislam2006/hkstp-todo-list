@@ -1,14 +1,22 @@
 import { NextFunction, Request, Response } from "express";
 import { todoService } from "../services/todoService";
 
-const dateTime = new Date().toJSON();
-
-/**
- * Handle HTTP requests for to-do operations
- */
-
 export const healthCheck = async (req: Request, res: Response) => {
-  res.send(`Todo APIs is running [${dateTime}]`);
+  const dateTime = new Date().toISOString();
+  try {
+    // Test Firebase connectivity by fetching todos
+    await todoService.getTodos();
+    res.status(200).send(`Todo APIs is running with Firebase [${dateTime}]`);
+  } catch (error) {
+    console.error("Health check failed:", error);
+    res
+      .status(503)
+      .send(
+        `Todo APIs is running but Firebase failed [${dateTime}] - Error: ${
+          (error as Error).message
+        }`
+      );
+  }
 };
 
 export const getTodos = async (

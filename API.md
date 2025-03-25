@@ -22,7 +22,16 @@ This document describes the RESTful API for the Todo List application, built wit
 | `priority`   | `string`  | Priority level (`high`, `medium`, `low`) | Yes      | `low`          |
 
 
-## 1. Get All Todos
+## 1. Health Check
+- **Endpoint**: `GET /api/v1/todos/health`
+- **Purpose**: Verifies the API is running and Firebase is accessible by testing the TodoService.
+- **Example**: `curl http://localhost:3001/api/v1/todos/health`
+- **Response**:
+  - Success: `"Todo APIs is running with Firebase [timestamp]"`
+  - Failure: `"Todo APIs is running but Firebase failed [timestamp] - Error: ..."`
+
+
+## 2. Get All Todos
 `GET /todos` endpoint for fetching all item in the Todo List application.
 - **Method**: `GET`
 - **Path**: `/todos`
@@ -58,7 +67,7 @@ This document describes the RESTful API for the Todo List application, built wit
 ```
 
 
-## 2. Create a Todo
+## 3. Create a Todo
 `POST /todos` endpoint for creating a new to-do item in the Todo List application.
 - **Method**: `POST`
 - **Path**: `/todos`
@@ -91,7 +100,7 @@ This document describes the RESTful API for the Todo List application, built wit
 ```
 
 
-## 3. Update a Todo
+## 4. Update a Todo
 `PUT /todos/:id` endpoint for updating an existing to-do item in the Todo List application.
 - **Method**: `PUT`
 - **Path**: `/todos/:id`
@@ -124,7 +133,7 @@ This document describes the RESTful API for the Todo List application, built wit
 ```
 
 
-## 4. Delete a Todo
+## 5. Delete a Todo
 `DELETE /todos/:id` endpoint for deleting a to-do item in the Todo List application.
 - **Method**: `DELETE`
 - **Path**: `/todos/:id`
