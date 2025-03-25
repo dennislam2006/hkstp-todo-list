@@ -7,6 +7,9 @@ const app = express();
 const PORT = process.env.PORT || 3001;
 const VERSION = process.env.VERSION || "v1";
 
+/**
+ * Main Express server setup
+ */
 app.use(cors());
 app.use(express.json());
 app.use(`/api/${VERSION}/todos`, todoRoutes);
