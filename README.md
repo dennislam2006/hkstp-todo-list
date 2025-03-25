@@ -20,6 +20,7 @@ CRUD operations for a to-do lists, responsive design, clean design pattern and v
    - Backend: `npm run dev`
 
 ## API Endpoints
+- GET /api/todos/health: Health check
 - GET /api/todos: Fetch all todos
 - POST /api/todos: Create a todo
 - PUT /api/todos/:id: Update a todo
