@@ -24,3 +24,7 @@ CRUD operations for a to-do lists, responsive design, clean design pattern and v
 - POST /api/todos: Create a todo
 - PUT /api/todos/:id: Update a todo
 - DELETE /api/todos/:id: Delete a todo
+
+## Docs
+- [API Docs] API.md
+- [Database Schema] DB_Schema.md

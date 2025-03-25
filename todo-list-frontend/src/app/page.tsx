@@ -52,6 +52,7 @@ export default function Home() {
     setEditingTodo(todo);
   };
 
+  /** Clear interval */
   useEffect(() => {
     let timer:any
     if(successMsg) {
